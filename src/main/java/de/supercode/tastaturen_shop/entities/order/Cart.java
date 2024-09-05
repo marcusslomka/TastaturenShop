@@ -4,7 +4,7 @@ import de.supercode.tastaturen_shop.entities.kunde.Customer;
 import jakarta.persistence.*;
 
 @Entity
-public class Warenkorb {
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

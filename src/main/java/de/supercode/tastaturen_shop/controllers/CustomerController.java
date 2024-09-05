@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/v1/shop/customer")
+@RequestMapping("/api/v1/shop/customers")
 public class CustomerController {
 
     CustomerService customerService;
@@ -24,9 +24,8 @@ public class CustomerController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Customer> getCustomerByID(@PathVariable long id){
-        customerService.getCustomer(id);
-        if (customerService.getCustomer(id).isEmpty()) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        else return ResponseEntity.status(HttpStatus.FOUND).build();
+        if (customerService.getCustomer(id)==null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        else return ResponseEntity.status(HttpStatus.FOUND).body(customerService.getCustomer(id));
     }
 
     @PutMapping("/{id}")

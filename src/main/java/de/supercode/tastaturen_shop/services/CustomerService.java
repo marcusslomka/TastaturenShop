@@ -18,11 +18,10 @@ public class CustomerService {
     }
 
     public void createNewCustomer(Customer customer){
-
         this.customerRepository.save(customer);
     }
-    public Optional<Customer> getCustomer(long id){
-        return this.customerRepository.findById(id);
+    public Customer getCustomer(long id){
+        return this.customerRepository.findById(id).orElse(null);
     }
     public Customer updateCustomer(long id, Customer customer){
         Customer toUpdateCustomer = customerRepository.findById(id).orElse(null);

@@ -12,7 +12,7 @@ public class Article {
     private long id;
     private double costs;
     private String name;
-    private String disciption;
+    private String discription;
     private boolean status;
     private int amountLeft;
 
@@ -40,12 +40,12 @@ public class Article {
         this.name = name;
     }
 
-    public String getDisciption() {
-        return disciption;
+    public String getDiscription() {
+        return discription;
     }
 
-    public void setDisciption(String disciption) {
-        this.disciption = disciption;
+    public void setDiscription(String discription) {
+        this.discription = discription;
     }
 
     public boolean isStatus() {

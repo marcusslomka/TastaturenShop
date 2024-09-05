@@ -15,5 +15,43 @@ public class Address {
     private int plz;
     private String city;
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getStreet() {
+        return Street;
+    }
+
+    public void setStreet(String street) {
+        Street = street;
+    }
+
+    public String getHousenumber() {
+        return housenumber;
+    }
+
+    public void setHousenumber(String housenumber) {
+        this.housenumber = housenumber;
+    }
+
+    public int getPlz() {
+        return plz;
+    }
+
+    public void setPlz(int plz) {
+        this.plz = plz;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
 }

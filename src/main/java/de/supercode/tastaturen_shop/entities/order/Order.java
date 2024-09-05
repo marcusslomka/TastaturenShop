@@ -1,6 +1,5 @@
 package de.supercode.tastaturen_shop.entities.order;
 
-import de.supercode.tastaturen_shop.entities.article.Order_Article;
 import de.supercode.tastaturen_shop.entities.kunde.Customer;
 import jakarta.persistence.*;
 
@@ -13,11 +12,11 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @ManyToOne
-    private Customer customer;
+//    @OneToMany
+//    private Customer customer;
 
-    @OneToMany
-    private List<Order_Article> orderArticleList;
+//    @OneToMany
+    //private List<Order_Article> orderArticleList;
 
     private boolean status;
     private LocalDate orderDate;
