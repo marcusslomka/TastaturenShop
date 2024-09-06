@@ -4,16 +4,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Min(5)
     private double costs;
+    @NotBlank
     private String name;
+    @NotBlank
     private String discription;
     private boolean status;
+    @Min(0)
     private int amountLeft;
 
     public long getId() {

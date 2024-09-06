@@ -1,13 +1,12 @@
 package de.supercode.tastaturen_shop.entities.order;
 
-import de.supercode.tastaturen_shop.entities.kunde.Customer;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
-public class Order {
+
+public class Bestellung {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

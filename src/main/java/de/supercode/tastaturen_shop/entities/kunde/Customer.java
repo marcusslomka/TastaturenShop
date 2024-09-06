@@ -1,6 +1,8 @@
 package de.supercode.tastaturen_shop.entities.kunde;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Customer {
@@ -9,9 +11,11 @@ public class Customer {
     private long id;
     @ManyToOne
     private Address address;
-
+    @NotBlank
     private String firstName;
+    @NotBlank
     private String lastName;
+    @Email
     private String email;
 
     public long getId() {
