@@ -12,14 +12,14 @@ public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Min(5)
+//    @Min(5)
     private double costs;
-    @NotBlank
+//    @NotBlank
     private String name;
-    @NotBlank
+//    @NotBlank
     private String discription;
     private boolean status;
-    @Min(0)
+//    @Min(0)
     private int amountLeft;
 
     public long getId() {
