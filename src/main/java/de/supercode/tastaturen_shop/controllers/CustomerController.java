@@ -10,6 +10,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -58,12 +59,16 @@ public class CustomerController {
         if (customerService.getCustomer(id)==null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         else return ResponseEntity.status(HttpStatus.FOUND).body(customerService.getCustomer(id));
     }
+    @GetMapping
+    public ResponseEntity<List<Customer>> getAllCustomers(){
+        return new ResponseEntity<>(customerService.getAllCustomers(),HttpStatus.OK);
+    }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateCustomer(@PathVariable long id, @RequestBody Customer customer){
-        customerService.updateCustomer(id,customer);
+    public ResponseEntity<Customer> updateCustomer(@PathVariable long id, @RequestBody Customer customer){
+        Customer toUpdateCostumer = customerService.updateCustomer(id,customer);
         if (customerService.updateCustomer(id,customer) == null) return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-        else return ResponseEntity.ok().build();
+        else return new ResponseEntity<>(toUpdateCostumer,HttpStatus.OK);
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCustomer(@PathVariable long id){

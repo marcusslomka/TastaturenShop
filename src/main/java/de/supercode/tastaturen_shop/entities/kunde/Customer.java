@@ -11,11 +11,11 @@ public class Customer {
     private long id;
     @ManyToOne
     private Address address;
-    @NotBlank
+//    @NotBlank
     private String firstName;
-    @NotBlank
+//    @NotBlank
     private String lastName;
-    @Email
+//    @Email
     private String email;
 
     public long getId() {
