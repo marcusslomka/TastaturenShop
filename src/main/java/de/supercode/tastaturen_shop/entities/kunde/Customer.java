@@ -1,5 +1,6 @@
 package de.supercode.tastaturen_shop.entities.kunde;
 
+import de.supercode.tastaturen_shop.entities.order.Cart;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -17,6 +18,8 @@ public class Customer {
     private String lastName;
     @Email
     private String email;
+    @OneToOne(mappedBy = "customer", cascade = CascadeType.PERSIST)
+    private Cart cart;
 
     public long getId() {
         return id;
@@ -56,5 +59,13 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 }

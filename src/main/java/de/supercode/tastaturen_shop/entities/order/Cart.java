@@ -4,6 +4,7 @@ import de.supercode.tastaturen_shop.entities.article.Article;
 import de.supercode.tastaturen_shop.entities.kunde.Customer;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,6 +16,30 @@ public class Cart {
     @OneToOne
     private Customer customer;
     @ManyToMany()
-    private List<Cart_Article> cartArticleList;
+    private List<Article> articleList = new ArrayList<>();
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public List<Article> getArticleList() {
+        return articleList;
+    }
+
+    public void setArticleList(List<Article> articleList) {
+        this.articleList = articleList;
+    }
 
 }

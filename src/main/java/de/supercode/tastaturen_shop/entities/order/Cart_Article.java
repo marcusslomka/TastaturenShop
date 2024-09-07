@@ -10,5 +10,5 @@ public class Cart_Article {
     private long id;
 
     @OneToMany
-    private Article
+    private long ArticId;
 }

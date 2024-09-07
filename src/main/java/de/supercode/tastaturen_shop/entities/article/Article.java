@@ -1,9 +1,12 @@
 package de.supercode.tastaturen_shop.entities.article;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.supercode.tastaturen_shop.entities.order.Cart;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+
+import java.util.List;
 
 @Entity
 public class Article {
@@ -19,8 +22,9 @@ public class Article {
     private boolean status;
     @Min(0)
     private int amountLeft;
-    @ManyToMany
-    private Cart cart;
+    @ManyToMany(mappedBy = "article")
+    @JsonIgnore
+    private List<Cart> carts;
 
     public long getId() {
         return id;
@@ -64,5 +68,13 @@ public class Article {
 
     public void setAmountLeft(int amountLeft) {
         this.amountLeft = amountLeft;
+    }
+
+    public List<Cart> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(List<Cart> carts) {
+        this.carts = carts;
     }
 }
