@@ -1,9 +1,7 @@
 package de.supercode.tastaturen_shop.entities.article;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import de.supercode.tastaturen_shop.entities.order.Cart;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 
@@ -12,22 +10,20 @@ public class Article {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-//    @Min(5)
+    @Min(5)
     private double costs;
-//    @NotBlank
+    @NotBlank
     private String name;
-//    @NotBlank
+    @NotBlank
     private String discription;
     private boolean status;
-//    @Min(0)
+    @Min(0)
     private int amountLeft;
+    @ManyToMany
+    private Cart cart;
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public double getCosts() {

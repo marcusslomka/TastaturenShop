@@ -23,30 +23,30 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ExceptionHandler(ConstraintViolationException.class)
-//    public Map<String,String> handleValidationError(ConstraintViolationException exception){
-//        Map<String,String> errorMap = new HashMap<>();
-//        exception.getConstraintViolations()
-//                .forEach( violation -> {
-//                    String fieldName = violation.getPropertyPath().toString();
-//                    String errorMessage = violation.getMessage();
-//                });
-//        return errorMap;
-//    }
-//    @ResponseStatus(HttpStatus.BAD_REQUEST)
-//    @ExceptionHandler(MethodArgumentNotValidException.class)
-//    public Map<String,String> handleValidationError(MethodArgumentNotValidException exception){
-//        Map<String,String> errorMap = new HashMap<>();
-//        exception.getBindingResult().getAllErrors().forEach(error ->{
-//            String fieldName = ((FieldError)error).getField();
-//            String message = error.getDefaultMessage();
-//
-//            errorMap.put(fieldName, message);
-//        });
-//
-//        return errorMap;
-//    }
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(ConstraintViolationException.class)
+    public Map<String,String> handleValidationError(ConstraintViolationException exception){
+        Map<String,String> errorMap = new HashMap<>();
+        exception.getConstraintViolations()
+                .forEach( violation -> {
+                    String fieldName = violation.getPropertyPath().toString();
+                    String errorMessage = violation.getMessage();
+                    errorMap.put(fieldName,errorMessage);
+                });
+        return errorMap;
+    }
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String,String> handleValidationError(MethodArgumentNotValidException exception){
+        Map<String,String> errorMap = new HashMap<>();
+        exception.getBindingResult().getAllErrors().forEach(error ->{
+            String fieldName = ((FieldError)error).getField();
+            String message = error.getDefaultMessage();
+            errorMap.put(fieldName, message);
+        });
+
+        return errorMap;
+    }
 
     @PostMapping
     public ResponseEntity<Void> createNewCustomer(@RequestBody Customer customer){
@@ -75,4 +75,6 @@ public class CustomerController {
         customerService.deleteCustomer(id);
         return ResponseEntity.ok().build();
     }
+
+
 }
